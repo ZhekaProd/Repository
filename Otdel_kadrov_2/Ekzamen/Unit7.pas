@@ -33,7 +33,7 @@ implementation
 
 {$R *.dfm}
 
-uses Unit8;
+
 
 procedure TForm7.Button1Click(Sender: TObject);
 begin
@@ -77,14 +77,16 @@ begin
     Application.MainForm.Close;
 end;
 
-
-
 procedure TForm7.Button3Click(Sender: TObject);
 begin
-DataModule2.ADOTable2.Append;
-Form8.Show;
-Hide;
-
+DataModule2.ADOTable2.Insert;
+DataModule2.ADOTable2['логин']:=Edit1.Text;
+DataModule2.ADOTable2['пароль']:=Edit2.Text;
+DataModule2.ADOTable2.Post;
+Edit1.Clear;
+Edit2.Clear;
+MessageBox(handle, PChar('Ќовый пользователь успешно зарегистрирован!'),
+        PChar('–егистраци€ нового пользовател€'), MB_ICONASTERISK + MB_OK);
 end;
 
 end.
